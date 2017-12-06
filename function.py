@@ -1,5 +1,5 @@
 # User defined function (def)
-def function(arg1, arg2):
-    print arg1, arg2
+def foo(bar1, bar2):
+    print bar1, bar2
 
-function('1', 8)
+foo('1', 8)
