@@ -4,7 +4,7 @@ var foo = 'bar'
 let foo = 'bar'
 
 // String
-str = 'foo'
+str = 'foo' + bar
 str = `foo ${bar}`
 
 // Integer
