@@ -1,27 +1,29 @@
 // Declaring Variables
 
-Immutable/* ish */
+Immutable-ish
     const foo = 'bar'
 
 Mutable
-    var foo = 'bar'
+    var foo = 'bar' /* Hoisted */
     let foo = 'bar'
 
-// String
-str = 'foo' + bar
-str = `foo ${bar}`
+// Types
 
-// Integer
-int = 42
+    // String
+    str = 'foo' + bar
+    str = `foo ${bar}`
 
-// Float
-float = 42.42
+    // Integer
+    int = 42
 
-// Boolean
-bool = true || false
+    // Float
+    float = 42.42
 
-// Array []
-arr = ['a', 42, true, {}]
+    // Boolean
+    bool = true || false
 
-// Object {}
-obj = { key: 'property' }
+    // Array []
+    arr = ['a', 42, true, {}]
+
+    // Object {}
+    obj = { key: 'property' }
