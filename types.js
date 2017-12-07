@@ -1,7 +1,11 @@
 // Declaring Variables
-const foo = 'bar'
-var foo = 'bar'
-let foo = 'bar'
+
+Immutable/* ish */
+    const foo = 'bar'
+
+Mutable
+    var foo = 'bar'
+    let foo = 'bar'
 
 // String
 str = 'foo' + bar
