@@ -23,3 +23,7 @@ Mutable
 
     # Dictionary (dict, {})
     dict = {"key": 'property'}
+
+Falsy
+
+    None
