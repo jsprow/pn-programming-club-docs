@@ -1,5 +1,6 @@
 const body = document.querySelector('body')
 const canvas = document.querySelector('canvas')
+
 let innerWidth = window.innerWidth
 let innerHeight = window.innerHeight
 
@@ -8,12 +9,14 @@ const c = canvas.getContext('2d')
 canvas.width = innerWidth
 canvas.height = innerHeight
 
-const randomColor = () => {
-	let rand = Math.random()
-	if (rand < 0.33) return `rgba(200, 0, 0, 0.5)`
-	if (rand >= 0.33 && rand < 0.66) return `rgba(0, 200, 0, 0.5)`
-	if (rand >= 0.66) return `rgba(0, 0, 200, 0.5)`
-}
+const colors = [
+	'rgba(255, 134, 71, 0.95',
+	'rgba(232, 97, 65, 0.95)',
+	'rgba(255, 92, 65, 0.95)',
+	'rgba(232, 65, 121, 0.95)',
+	'rgba(255, 71, 224, 0.95)'
+]
+const randomColor = () => colors[Math.floor(Math.random() * colors.length)]
 
 function Circle(x, y, dx, dy, radius, maxRadius, fill) {
 	this.x = x
@@ -30,7 +33,29 @@ function Circle(x, y, dx, dy, radius, maxRadius, fill) {
 	}
 
 	this.update = () => {
-		// interactivity
+		// avoid
+		if (
+			mouse.x - this.x < 100 &&
+			mouse.x - this.x > -100 &&
+			mouse.y - this.y < 100 &&
+			mouse.y - this.y > -100
+		) {
+			if (mouse.x < this.x && this.dx < (Math.random() - 0.5) * 10) {
+				this.dx += 0.5
+			} else if (
+				mouse.x > this.x && this.dx > -((Math.random() - 0.5) * 10)
+			) {
+				this.dx -= 0.5
+			}
+			if (mouse.y < this.y && this.dy < (Math.random() - 0.5) * 10) {
+				this.dy += 0.5
+			} else if (
+				mouse.y > this.y && this.dy > -((Math.random() - 0.5) * 10)
+			) {
+				this.dy -= 0.5
+			}
+		}
+		// grow
 		if (
 			mouse.x - this.x < 50 &&
 			mouse.x - this.x > -50 &&
@@ -38,7 +63,7 @@ function Circle(x, y, dx, dy, radius, maxRadius, fill) {
 			mouse.y - this.y > -50 &&
 			this.radius < maxRadius
 		) {
-			this.radius += 1
+			this.radius += 2
 		} else if (this.radius > radius) {
 			this.radius -= 1
 		}
@@ -75,19 +100,26 @@ window.addEventListener('resize', () => {
 
 	canvas.width = innerWidth
 	canvas.height = innerHeight
+
+	init()
 })
 
 let circleArr = []
 
-for (let i = 0; i < 100; i++) {
-	let radius = Math.random() * 30 + 20
-	let x = Math.random() * (innerWidth - radius * 2) + radius
-	let y = Math.random() * (innerHeight - radius * 2) + radius
-	let dx = (Math.random() - 0.5) * 10
-	let dy = (Math.random() - 0.5) * 10
-	let fill = randomColor()
+const init = () => {
+	circleArr = []
 
-	circleArr.push(new Circle(x, y, dx, dy, radius, 60, fill))
+	for (let i = 0; i < 300; i++) {
+		let radius = Math.random() * 30 + 20
+		let maxRadius = 100
+		let x = Math.random() * (innerWidth - radius * 2) + radius
+		let y = Math.random() * (innerHeight - radius * 2) + radius
+		let dx = (Math.random() - 0.5) * 5
+		let dy = (Math.random() - 0.5) * 5
+		let fill = randomColor()
+
+		circleArr.push(new Circle(x, y, dx, dy, radius, maxRadius, fill))
+	}
 }
 
 function animate() {
@@ -99,4 +131,5 @@ function animate() {
 	}
 }
 
+init()
 animate()
