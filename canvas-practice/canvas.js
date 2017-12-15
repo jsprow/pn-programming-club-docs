@@ -10,11 +10,11 @@ canvas.width = innerWidth
 canvas.height = innerHeight
 
 const colors = [
-	'rgba(255, 134, 71, 0.95',
-	'rgba(232, 97, 65, 0.95)',
-	'rgba(255, 92, 65, 0.95)',
-	'rgba(232, 65, 121, 0.95)',
-	'rgba(255, 71, 224, 0.95)'
+	'rgba(255, 134, 71, 0.90',
+	'rgba(232, 97, 65, 0.90)',
+	'rgba(255, 92, 65, 0.90)',
+	'rgba(232, 65, 121, 0.90)',
+	'rgba(255, 71, 224, 0.90)'
 ]
 const randomColor = () => colors[Math.floor(Math.random() * colors.length)]
 

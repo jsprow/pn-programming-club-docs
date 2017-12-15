@@ -19,3 +19,6 @@ const adder = arr => {
 const isAdded = adder(arr)
 
 isAdded
+
+// Modulus % = gives remainder
+// Example: 4 % 2 = 0
